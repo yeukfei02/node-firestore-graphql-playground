@@ -1,3 +1,6 @@
+import env from 'dotenv';
+env.config();
+
 import admin from 'firebase-admin';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
