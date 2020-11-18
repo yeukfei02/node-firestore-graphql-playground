@@ -37,16 +37,14 @@ export const createUser = async (email: string, password: string, name: string):
   }
 };
 
-export const getUserByEmail = async (
-  email: string,
-): Promise<FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>> => {
+export const getUserByEmail = async (email: string): Promise<FirebaseFirestore.DocumentData> => {
   let result = null;
 
   if (email) {
     const user = await usersDb.where('email', '==', email).get();
     if (!user.empty && user.size === 1) {
       const item = user.docs[0];
-      result = item;
+      result = item.data();
     }
   }
 
@@ -70,8 +68,40 @@ export const getUserById = async (id: string): Promise<FirebaseFirestore.Documen
   const user = await usersDb.where('id', '==', id).get();
   if (!user.empty && user.size === 1) {
     const item = user.docs[0];
-    result = item;
+    result = item.data();
   }
 
   return result;
+};
+
+export const updateUserById = async (id: string, email: string, password: string, name: string): Promise<void> => {
+  const usersList = await usersDb.listDocuments();
+  if (usersList) {
+    for (let index = 0; index < usersList.length; index++) {
+      const item = usersList[index];
+      const itemGet = await item.get();
+      const itemId = itemGet.data().id;
+      if (itemId === id) {
+        item.update({
+          email: email,
+          password: password,
+          name: name,
+        });
+      }
+    }
+  }
+};
+
+export const deleteUserById = async (id: string): Promise<void> => {
+  const usersList = await usersDb.listDocuments();
+  if (usersList) {
+    for (let index = 0; index < usersList.length; index++) {
+      const item = usersList[index];
+      const itemGet = await item.get();
+      const itemId = itemGet.data().id;
+      if (itemId === id) {
+        item.delete();
+      }
+    }
+  }
 };
