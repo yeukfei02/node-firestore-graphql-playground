@@ -2,8 +2,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
-import { createUser, getUserByEmail, getUsers, getUserById, updateUserById, deleteUserById } from '../../model/users';
-import { authorize } from '../../common/common';
+import { createUser, getUserByEmail, getUsers, getUserById, updateUserById, deleteUserById } from '../model/users';
+import { authorize } from '../common/common';
 
 const resolvers = {
   Query: {
