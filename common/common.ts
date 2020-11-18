@@ -1,3 +1,6 @@
+import env from 'dotenv';
+env.config();
+
 import jwt from 'jsonwebtoken';
 
 export const authorize = async (token: string): Promise<boolean> => {
