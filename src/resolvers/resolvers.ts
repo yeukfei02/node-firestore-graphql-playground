@@ -6,28 +6,45 @@ import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
 import { createUser, getUserByEmail, getUsers, getUserById, updateUserById, deleteUserById } from '../../model/users';
+import { authorize } from '../../common/common';
 
 const resolvers = {
   Query: {
     users: async (root: any, args: any, context: any, info: any): Promise<FirebaseFirestore.DocumentData[]> => {
-      const usersList = (await getUsers()) || [];
+      let usersList: any[] = [];
+
+      const token = context.token;
+      if (token) {
+        const isAuth = await authorize(token);
+        if (isAuth) {
+          usersList = (await getUsers()) || [];
+        }
+      }
+
       return usersList;
     },
 
     user: async (root: any, args: any, context: any, info: any): Promise<FirebaseFirestore.DocumentData> => {
       let result = {};
 
-      const id = args.id;
-      if (id) {
-        const user = await getUserById(id);
-        if (user) {
-          result = user;
+      const token = context.token;
+      if (token) {
+        const isAuth = await authorize(token);
+        if (isAuth) {
+          const id = args.id;
+          if (id) {
+            const user = await getUserById(id);
+            if (user) {
+              result = user;
+            }
+          }
         }
       }
 
       return result;
     },
   },
+
   Mutation: {
     signup: async (
       root: any,
@@ -108,15 +125,21 @@ const resolvers = {
         message: 'update user fail',
       };
 
-      const id = args.id;
-      const email = args.data.email;
-      const password = bcrypt.hashSync(args.data.password, 10);
-      const name = args.data.name;
-      if (id && email && password && name) {
-        await updateUserById(id, email, password, name);
-        response = {
-          message: 'update user success',
-        };
+      const token = context.token;
+      if (token) {
+        const isAuth = await authorize(token);
+        if (isAuth) {
+          const id = args.id;
+          const email = args.data.email;
+          const password = bcrypt.hashSync(args.data.password, 10);
+          const name = args.data.name;
+          if (id && email && password && name) {
+            await updateUserById(id, email, password, name);
+            response = {
+              message: 'update user success',
+            };
+          }
+        }
       }
 
       return response;
@@ -134,13 +157,20 @@ const resolvers = {
         message: 'delete user fail',
       };
 
-      const id = args.id;
-      if (id) {
-        await deleteUserById(id);
-        response = {
-          message: 'delete user success',
-        };
+      const token = context.token;
+      if (token) {
+        const isAuth = await authorize(token);
+        if (isAuth) {
+          const id = args.id;
+          if (id) {
+            await deleteUserById(id);
+            response = {
+              message: 'delete user success',
+            };
+          }
+        }
       }
+
       return response;
     },
   },
