@@ -9,6 +9,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   cors: true,
+  tracing: true,
   introspection: true,
   playground: true,
   context: ({ req }) => {
