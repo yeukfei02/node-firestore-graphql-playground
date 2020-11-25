@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.2...v0.1.3) (2020-11-25)
+
+
+### Features
+
+* 🎸 add tracing ([5233531](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/52335310c834b1eb775f1a80872b2c040dfa97c5))
+
 ### [0.1.2](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.1...v0.1.2) (2020-11-18)
 
 ### 0.1.1 (2020-11-18)
