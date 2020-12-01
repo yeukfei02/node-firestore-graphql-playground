@@ -7,7 +7,7 @@ import { authorize } from '../common/common';
 
 const resolvers = {
   Query: {
-    users: async (root: any, args: any, context: any, info: any): Promise<FirebaseFirestore.DocumentData[]> => {
+    users: async (parent: any, args: any, context: any, info: any): Promise<FirebaseFirestore.DocumentData[]> => {
       let usersList: any[] = [];
 
       const token = context.token;
@@ -21,7 +21,7 @@ const resolvers = {
       return usersList;
     },
 
-    user: async (root: any, args: any, context: any, info: any): Promise<FirebaseFirestore.DocumentData> => {
+    user: async (parent: any, args: any, context: any, info: any): Promise<FirebaseFirestore.DocumentData> => {
       let result = {};
 
       const token = context.token;
@@ -44,7 +44,7 @@ const resolvers = {
 
   Mutation: {
     signup: async (
-      root: any,
+      parent: any,
       args: any,
       context: any,
       info: any,
@@ -70,7 +70,7 @@ const resolvers = {
     },
 
     login: async (
-      root: any,
+      parent: any,
       args: any,
       context: any,
       info: any,
@@ -111,7 +111,7 @@ const resolvers = {
     },
 
     updateUser: async (
-      root: any,
+      parent: any,
       args: any,
       context: any,
       info: any,
@@ -143,7 +143,7 @@ const resolvers = {
     },
 
     deleteUser: async (
-      root: any,
+      parent: any,
       args: any,
       context: any,
       info: any,
