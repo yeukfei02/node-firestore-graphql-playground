@@ -18,9 +18,6 @@
 							"graphql": {
 								"query": "mutation signup ($data: Signup!) {\n    signup (data: $data) {\n        message\n    }\n}",
 								"variables": "{\n  \"data\": {\n    \"email\": \"test@email.com\",\n    \"password\": \"test\",\n    \"name\": \"test\"\n  }\n}"
-							},
-							"options": {
-								"graphql": {}
 							}
 						},
 						"url": {
@@ -41,9 +38,6 @@
 									"graphql": {
 										"query": "mutation signup ($data: Signup!) {\n    signup (data: $data) {\n        message\n    }\n}",
 										"variables": "{\n  \"data\": {\n    \"email\": \"test555@email.com\",\n    \"password\": \"test555\",\n    \"name\": \"test555\"\n  }\n}"
-									},
-									"options": {
-										"graphql": {}
 									}
 								},
 								"url": {
@@ -94,6 +88,21 @@
 				},
 				{
 					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();",
+									"console.log(\"jsonData = \", jsonData);",
+									"if (jsonData) {",
+									"    pm.environment.set(\"jwtToken\", jsonData.data.login.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -102,9 +111,6 @@
 							"graphql": {
 								"query": "mutation login ($data: Login!) {\n    login (data: $data) {\n        message\n        token\n    }\n}",
 								"variables": "{\n  \"data\": {\n    \"email\": \"test@email.com\",\n    \"password\": \"test\"\n  }\n}"
-							},
-							"options": {
-								"graphql": {}
 							}
 						},
 						"url": {
@@ -125,9 +131,6 @@
 									"graphql": {
 										"query": "mutation login ($data: Login!) {\n    login (data: $data) {\n        message\n        token\n    }\n}",
 										"variables": "{\n  \"data\": {\n    \"email\": \"test@email.com\",\n    \"password\": \"test\"\n  }\n}"
-									},
-									"options": {
-										"graphql": {}
 									}
 								},
 								"url": {
@@ -179,22 +182,23 @@
 				{
 					"name": "updateUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiOTBhYWFjLWY2YTEtNGVhYi04MjJhLWE2MmI3MWY1NTZlNiIsIm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjA1NzE0ODkzLCJleHAiOjE2MDU4MDEyOTN9.oNJpG0UZe2cZkux-09Gm7U-znSYWtStybkNvyL3_8ZE",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation updateUser ($id: ID!, $data: UpdateUser!) {\n    updateUser (id: $id, data: $data) {\n        message\n    }\n}",
 								"variables": "{\n  \"id\": \"8f83baab-ec65-4005-b37f-b99dabe81609\",\n  \"data\": {\n    \"email\": \"test888@email.com\",\n    \"password\": \"test888\",\n    \"name\": \"test888\"\n  }\n}"
-							},
-							"options": {
-								"graphql": {}
 							}
 						},
 						"url": {
@@ -221,9 +225,6 @@
 									"graphql": {
 										"query": "mutation updateUser ($id: ID!, $data: UpdateUser!) {\n    updateUser (id: $id, data: $data) {\n        message\n    }\n}",
 										"variables": "{\n  \"id\": \"8f83baab-ec65-4005-b37f-b99dabe81609\",\n  \"data\": {\n    \"email\": \"test888@email.com\",\n    \"password\": \"test888\",\n    \"name\": \"test888\"\n  }\n}"
-									},
-									"options": {
-										"graphql": {}
 									}
 								},
 								"url": {
@@ -275,22 +276,23 @@
 				{
 					"name": "deleteUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiOTBhYWFjLWY2YTEtNGVhYi04MjJhLWE2MmI3MWY1NTZlNiIsIm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjA1NzE0ODkzLCJleHAiOjE2MDU4MDEyOTN9.oNJpG0UZe2cZkux-09Gm7U-znSYWtStybkNvyL3_8ZE",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation deleteUser ($id: ID!) {\n    deleteUser (id: $id) {\n        message\n    }\n}",
 								"variables": "{\n  \"id\": \"8f83baab-ec65-4005-b37f-b99dabe81609\"\n}"
-							},
-							"options": {
-								"graphql": {}
 							}
 						},
 						"url": {
@@ -300,10 +302,72 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "deleteUser",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiOTBhYWFjLWY2YTEtNGVhYi04MjJhLWE2MmI3MWY1NTZlNiIsIm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjA1NzE0ODkzLCJleHAiOjE2MDU4MDEyOTN9.oNJpG0UZe2cZkux-09Gm7U-znSYWtStybkNvyL3_8ZE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation deleteUser ($id: ID!) {\n    deleteUser (id: $id) {\n        message\n    }\n}",
+										"variables": "{\n  \"id\": \"c55f4a19-2ae0-412d-88f8-371678aa804f\"\n}"
+									}
+								},
+								"url": {
+									"raw": "localhost:4000",
+									"host": [
+										"localhost"
+									],
+									"port": "4000"
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-wEXLfrB1TX3Dsowlb2k+TlL9sIU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Nov 2020 16:03:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"deleteUser\": {\n            \"message\": \"delete user success\"\n        }\n    }\n}"
+						}
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "queries",
@@ -311,22 +375,23 @@
 				{
 					"name": "users",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiOTBhYWFjLWY2YTEtNGVhYi04MjJhLWE2MmI3MWY1NTZlNiIsIm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjA1NzE0ODkzLCJleHAiOjE2MDU4MDEyOTN9.oNJpG0UZe2cZkux-09Gm7U-znSYWtStybkNvyL3_8ZE",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
 								"query": "query users {\n    users {\n        id\n        email\n        password\n        name\n        createdAt\n        updatedAt\n    }\n}",
 								"variables": "{}"
-							},
-							"options": {
-								"graphql": {}
 							}
 						},
 						"url": {
@@ -353,9 +418,6 @@
 									"graphql": {
 										"query": "query users {\n    users {\n        id\n        email\n        password\n        name\n        createdAt\n        updatedAt\n    }\n}",
 										"variables": "{}"
-									},
-									"options": {
-										"graphql": {}
 									}
 								},
 								"url": {
@@ -407,22 +469,23 @@
 				{
 					"name": "user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiOTBhYWFjLWY2YTEtNGVhYi04MjJhLWE2MmI3MWY1NTZlNiIsIm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjA1NzE0ODkzLCJleHAiOjE2MDU4MDEyOTN9.oNJpG0UZe2cZkux-09Gm7U-znSYWtStybkNvyL3_8ZE",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
 								"query": "query user ($id: ID!) {\n    user (id: $id) {\n        id\n        email\n        password\n        name\n        createdAt\n        updatedAt\n    }\n}",
-								"variables": "{\n  \"id\": \"8f83baab-ec65-4005-b37f-b99dabe81609\"\n}"
-							},
-							"options": {
-								"graphql": {}
+								"variables": "{\n  \"id\": \"59c14af2-2fc8-4494-bb1b-421273e75b62\"\n}"
 							}
 						},
 						"url": {
@@ -449,9 +512,6 @@
 									"graphql": {
 										"query": "query user ($id: ID!) {\n    user (id: $id) {\n        id\n        email\n        password\n        name\n        createdAt\n        updatedAt\n    }\n}",
 										"variables": "{\n  \"id\": \"8f83baab-ec65-4005-b37f-b99dabe81609\"\n}"
-									},
-									"options": {
-										"graphql": {}
 									}
 								},
 								"url": {
@@ -500,13 +560,11 @@
 						}
 					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"variable": [
 		{
-			"id": "url",
 			"key": "url",
 			"value": "",
 			"type": "any",
@@ -515,6 +573,5 @@
 				"type": "text/plain"
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
