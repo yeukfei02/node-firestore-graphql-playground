@@ -1,6 +1,6 @@
 {
   "name": "node-firestore-graphql-playground",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "app.js",
   "repository": "https://github.com/yeukfei02/node-firestore-graphql-playground.git",
   "author": "Donald Wu <yeukfei02@gmail.com>",
