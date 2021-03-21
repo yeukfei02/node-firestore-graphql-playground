@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.5...v0.1.6) (2021-03-21)
+
+
+### Features
+
+* 🎸 add rimraf lib ([3386b63](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/3386b6379f2e5329da27a8ae11b000c20f2a328d))
+
 ### [0.1.5](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.4...v0.1.5) (2021-01-23)
 
 
