@@ -2,18 +2,18 @@
 
 node-firestore-graphql-playground
 
-documentation: https://documenter.getpostman.com/view/3827865/TVes6RyY
+documentation: <https://documenter.getpostman.com/view/3827865/TVes6RyY>
 
-api url: https://node-firestore-gql-playground.herokuapp.com/
+api url: <https://node-firestore-gql-playground.herokuapp.com/>
 
-## Requirement:
+## Requirement
 
 - install yarn
 - install node (v12+)
 
-## Testing and run:
+## Testing and run
 
-```
+```zsh
 $ yarn
 
 // development
@@ -29,9 +29,9 @@ $ yarn run test
 $ yarn run lint
 ```
 
-## Docker:
+## Docker
 
-```
+```zsh
 // build images and start container in one line
 docker-compose up -d --build
 
