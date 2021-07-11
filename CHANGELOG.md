@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.6...v0.1.7) (2021-07-11)
+
+
+### Bug Fixes
+
+* 🐛 use devDependencies in package.json ([7fc3677](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/7fc36773ee57e4a1bec0933f2e8cef150b269b54))
+
 ### [0.1.6](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.5...v0.1.6) (2021-03-21)
 
 
