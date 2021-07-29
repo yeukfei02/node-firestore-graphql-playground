@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.7...v0.1.8) (2021-07-29)
+
+
+### Features
+
+* 🎸 add nexus graphql lib ([320e75a](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/320e75a975790f9484f7ee9abfdefe64603ae374))
+
+
+### Bug Fixes
+
+* 🐛 fix package.json ([2bd7afd](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/2bd7afd2d1c76755f5e3482a031405d53ad3dc9c))
+
 ### [0.1.7](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.6...v0.1.7) (2021-07-11)
 
 
