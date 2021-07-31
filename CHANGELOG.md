@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.8...v0.1.9) (2021-07-31)
+
+
+### Bug Fixes
+
+* 🐛 add generated folder ([16ff584](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/16ff5843c6ccf91f144e1195c2cab6c51580f839))
+
 ### [0.1.8](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.7...v0.1.8) (2021-07-29)
 
 
