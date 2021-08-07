@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.9...v0.1.10) (2021-08-07)
+
+
+### Bug Fixes
+
+* 🐛 add exclude in tsconfig.json ([7cd35fa](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/7cd35fa5378a75c621494ab0cc9d4b8723928022))
+* 🐛 move apollo-server-testing to devDependencies ([ea3da58](https://github.com/yeukfei02/node-firestore-graphql-playground/commit/ea3da586b968cc620fd9fb6f5654c40f62c47b21))
+
 ### [0.1.9](https://github.com/yeukfei02/node-firestore-graphql-playground/compare/v0.1.8...v0.1.9) (2021-07-31)
 
 
