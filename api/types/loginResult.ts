@@ -9,5 +9,6 @@ export const LoginResult = objectType({
     t.field('token', {
       type: nonNull('String'),
     });
+    t.nonNull.string('userId');
   },
 });

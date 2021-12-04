@@ -4,7 +4,7 @@
  */
 
 declare global {
-  type NexusGen = NexusGenTypes;
+  interface NexusGen extends NexusGenTypes {}
 }
 
 export interface NexusGenInputs {
@@ -46,6 +46,7 @@ export interface NexusGenObjects {
     // root type
     message: string; // String!
     token: string; // String!
+    userId: string; // String!
   };
   Mutation: {};
   Query: {};
@@ -85,6 +86,7 @@ export interface NexusGenFieldTypes {
     // field return type
     message: string; // String!
     token: string; // String!
+    userId: string; // String!
   };
   Mutation: {
     // field return type
@@ -126,6 +128,7 @@ export interface NexusGenFieldTypeNames {
     // field return type name
     message: 'String';
     token: 'String';
+    userId: 'String';
   };
   Mutation: {
     // field return type name
