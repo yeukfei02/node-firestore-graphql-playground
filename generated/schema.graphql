@@ -14,6 +14,7 @@ input Login {
 type LoginResult {
   message: String!
   token: String!
+  userId: String!
 }
 
 type Mutation {

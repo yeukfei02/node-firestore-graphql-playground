@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
 import { createUser, getUserByEmail, getUsers, getUserById, updateUserById, deleteUserById } from '../model/users';
-import { authorize } from '../common/common';
+import { authorize } from '../helpers/helpers';
 
 export const usersControllerFunc = async (
   parent: any,
@@ -87,6 +87,7 @@ export const loginControllerFunc = async (
   let response = {
     message: 'login fail',
     token: '',
+    userId: '',
   };
 
   const email = args.data.email;
@@ -109,6 +110,7 @@ export const loginControllerFunc = async (
       response = {
         message: 'login success',
         token: token,
+        userId: user.id,
       };
     }
   }
